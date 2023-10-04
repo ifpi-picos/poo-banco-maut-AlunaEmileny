@@ -37,8 +37,8 @@ public class Transacao {
 
     public String toString(){
         return "Transação: "+this.getTipo()+
-               "\n Valor R$"+this.getValor()+ 
-               "\n Data:"+this.getData();
+               "\nValor R$ "+this.getValor()+ 
+               "\nData: "+this.getData();
     }
 
     
