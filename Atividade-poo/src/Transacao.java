@@ -1,11 +1,11 @@
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Transacao {
     private String tipo;
     private double valor;
-    private Date data;
+    private LocalDateTime data = LocalDateTime.now();
     
-    public Transacao(String tipo, double valor, Date data) {
+    public Transacao(String tipo, double valor, LocalDateTime data) {
         this.tipo = tipo;
         this.valor = valor;
         this.data = data;
@@ -27,11 +27,11 @@ public class Transacao {
         this.valor = valor;
     }
 
-    public Date getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 

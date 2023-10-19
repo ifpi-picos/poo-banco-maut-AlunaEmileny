@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.sql.Date;
+import java.time.LocalDateTime;
+
 public class Conta {
     private String agencia, numero;
     private double saldo;
@@ -49,7 +50,7 @@ public void verSaldo(){
     System.out.println("Seu Saldo é: "+getSaldo());
 }
 
-public void transferir(String destinatario,String numContaDestino, double valor){
+public void transferir(double valor, Conta destinatario){
     if (valor <= getSaldo()){
         this.setSaldo((getSaldo() - valor));
     }else {
@@ -57,8 +58,8 @@ public void transferir(String destinatario,String numContaDestino, double valor)
     }
 }
 
-public void adicionarTransacao(String tipo, double valor, Date data){
-    Transacao novaTransacao = new Transacao(tipo, valor, data);
+public void adicionarTransacao(String tipo, double valor, LocalDateTime data){
+    Transacao novaTransacao = new Transacao(tipo, valor, LocalDateTime.now());
     transacoes.add(novaTransacao);
 }
  public void verExtrato(){

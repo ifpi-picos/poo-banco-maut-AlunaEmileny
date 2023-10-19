@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Banco {
     public static void main(String[] args) {
@@ -18,6 +20,8 @@ public class Banco {
         String nome=scanner.next();
         System.out.println("Digite seu cpf: ");
         String cpf = scanner.next();
+        System.out.println("digite sua data de nascimento: ");
+        String data = scanner.nextLine();
         System.out.println("Digite a rua: ");
         String rua = scanner.next();
         System.out.println("Digite o bairro: ");
@@ -28,7 +32,7 @@ public class Banco {
         int numCasa = scanner.nextInt();
 
         Cliente.Endereco endereco = new Cliente.Endereco(rua, bairro, cidade, numCasa);
-        Cliente cliente = new Cliente(nome, cpf, endereco, null);
+        Cliente cliente = new Cliente(nome, cpf, endereco, LocalDate.now());
         conta = new Conta("000-1", "0102030-9", 0, cliente);
         System.out.println("Conta criada com sucesso!");
     }
@@ -37,14 +41,14 @@ public class Banco {
         double valor = scanner.nextDouble();
         conta.depositar(valor);
         System.out.println("Deposito realizado com sucesso!");
-        conta.adicionarTransacao("Deposito", valor, null);
+        conta.adicionarTransacao("Deposito", valor, LocalDateTime.now());
     }
     else if (op == 3){
         System.out.println("Qual valor você quer sacar?");
         double valor = scanner.nextDouble();
         conta.sacar(valor);
         System.out.println("saque realizado com sucesso!");
-        conta.adicionarTransacao("Saque", valor, null);
+        conta.adicionarTransacao("Saque", valor, LocalDateTime.now());
     }
     else if (op == 4){
         System.out.println("Qual valor você quer trasferir");
@@ -53,8 +57,8 @@ public class Banco {
         String destinatario = scanner.next();
         System.out.println("Digite o numero da conta de destino");
         String contaDestino = scanner.next();
-        conta.transferir(destinatario,contaDestino,valor);
-        conta.adicionarTransacao("Transferencia", valor, null);
+        conta.transferir(valor, destinatario);
+        conta.adicionarTransacao("Transferencia", valor, LocalDateTime.now());
     }
     else if (op == 5){
         conta.verSaldo();

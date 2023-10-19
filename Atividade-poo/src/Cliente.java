@@ -1,13 +1,12 @@
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class Cliente {
     private String nome;
     private String cpf;
     private Endereco endereco;
-    private Date data;
+    private LocalDate data;
 
-    public Cliente(String nome, String cpf, Endereco endereco, Date data) {
+    public Cliente(String nome, String cpf, Endereco endereco, LocalDate data) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -45,7 +44,7 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
     
