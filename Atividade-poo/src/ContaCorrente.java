@@ -27,15 +27,16 @@ public class ContaCorrente extends Conta {
                  this.setSaldo((getSaldo() - valor));
                  System.out.println("Transferencia sem combrança");
                  semCobraça++;
+                 adicionarTransacao("Transferencia", valor, LocalDateTime.now());
+
            }else {
                 System.out.println("Tranferencia interrompida, verifique seu saldo.");
         }
     }else{
         System.out.println("Tansferencia sobre taxa");
         this.setSaldo(getSaldo() - (valor + (valor * 0.1)));
+        adicionarTransacao("Transferencia", valor, LocalDateTime.now());
     }
-    verSaldo();
-    adicionarTransacao("Transferencia", valor, LocalDateTime.now());
 }
 
 public void sacar(double valor){

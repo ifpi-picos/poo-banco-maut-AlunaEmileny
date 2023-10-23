@@ -39,6 +39,7 @@ public class Conta {
     public void depositar(double valor){
         if (valor > 0){ 
         this.setSaldo((getSaldo()+valor));
+        adicionarTransacao("Deposito", valor, LocalDateTime.now());
     }
     else{
         System.out.println("Valor inválido");
@@ -47,6 +48,7 @@ public class Conta {
 public void sacar(double valor){
     if (valor <= getSaldo()){
         this.setSaldo((getSaldo()-valor));
+        adicionarTransacao("Saque", valor, LocalDateTime.now());
         }
         else {
             System.out.println("Saldo indisponivel para realizar essa ação");  
@@ -59,6 +61,7 @@ public void verSaldo(){
 public void transferir(double valor, Conta destinatario){
     if (valor <= getSaldo()){
         this.setSaldo((getSaldo() - valor));
+        adicionarTransacao("Transferencia", valor, LocalDateTime.now());
     }else {
         System.out.println("Tranferencia interrompida. Verifique o destino. ");
     }

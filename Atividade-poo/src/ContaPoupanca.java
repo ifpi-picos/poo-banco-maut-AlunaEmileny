@@ -1,4 +1,5 @@
 import Notificacao.Notificacao;
+import java.time.LocalDateTime;
 
 public class ContaPoupanca extends Conta{
     private double rendimento;
@@ -19,14 +20,14 @@ public class ContaPoupanca extends Conta{
         rendimento = valor * 0.1;
         setRendimento(rendimento);
         setSaldo(rendimento + getSaldo());
-        verSaldo();
+        adicionarTransacao("Deposito", valor, LocalDateTime.now());
     }
     public void sacar(double valor){
         if (getSaldo() >= valor){
             double taxa = 0.05;
             this.setSaldo(getSaldo() - (valor + (valor * taxa)));
             System.out.println("Saque realizado com sucesso!");
-            verSaldo();
+            adicionarTransacao("Saque", valor, LocalDateTime.now());
         }else {
             System.out.println("Saldo insuficiente para este saque");
         }
@@ -35,7 +36,7 @@ public class ContaPoupanca extends Conta{
         if (getSaldo() >= valor){
             this.setSaldo(getSaldo() - (valor + (valor * 0.1)));
             System.out.println("Saque realizado com sucesso!");
-            verSaldo();
+            adicionarTransacao("Transferencia", valor, LocalDateTime.now());
         }else {
             System.out.println("Verifique seu saldo para realizar essa transferência");
         }

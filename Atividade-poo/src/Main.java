@@ -20,12 +20,14 @@ public class Main {
         contaCorrente.transferir(90, conta);
         contaCorrente.transferir(30, conta);
         contaCorrente.transferir(60, conta);
-
+        contaCorrente.verExtrato();
+        System.out.println("::::::::::::::Conta POUPANÇA::::::::::");
         // Teste da conta Poupança
         Conta contaPoupanca = new ContaPoupanca("000-1", "010203-9", 0, cliente,0, msmSms);
         contaPoupanca.depositar(100);
         contaPoupanca.transferir(50, conta);
         contaPoupanca.sacar(10);
+        contaPoupanca.verExtrato();
 
         };
 }
