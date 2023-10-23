@@ -1,8 +1,10 @@
+import Notificacao.Notificacao;
+
 public class ContaPoupanca extends Conta{
     private double rendimento;
 
-    public ContaPoupanca(String agencia, String numero, double saldo, Cliente cliente, double rendimento){
-        super(agencia, numero, saldo, cliente);
+    public ContaPoupanca(String agencia, String numero, double saldo, Cliente cliente, double rendimento, Notificacao notificacao){
+        super(agencia, numero, saldo, cliente, notificacao);
         this.rendimento = rendimento;
     }
     public double getRendimento() {
@@ -11,7 +13,7 @@ public class ContaPoupanca extends Conta{
     public void setRendimento(double rendimento) {
         this.rendimento = rendimento;
     }
-    
+
     public void depositar(double valor){
         setSaldo(getSaldo() + valor);
         rendimento = valor * 0.1;

@@ -1,6 +1,10 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import Notificacao.Notificacao;
+
 import java.time.LocalDateTime;
 
 public class Conta {
@@ -8,13 +12,15 @@ public class Conta {
     private double saldo;
     private Cliente cliente;
     private List<Transacao> transacoes;
+    private Notificacao notificacao;
     
-    public Conta(String agencia, String numero, double saldo, Cliente cliente) {
+    public Conta(String agencia, String numero, double saldo, Cliente cliente, Notificacao notificacao) {
         this.agencia = agencia;
         this.numero = numero;
         this.saldo = saldo;
         this.cliente = cliente;
         this.transacoes = new ArrayList<>();
+        this.notificacao = notificacao;
     }   
     public String getAgencia() {
         return agencia;

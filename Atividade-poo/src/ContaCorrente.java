@@ -1,10 +1,13 @@
+
 import java.time.LocalDateTime;
+
+import Notificacao.Notificacao;
 public class ContaCorrente extends Conta {
     private double chequeEspecial;
     private int semCobraça;
 
-    public ContaCorrente(String agencia, String numero, double saldo, Cliente cliente, double chequeEspecial){
-        super(agencia, numero, saldo, cliente);
+    public ContaCorrente(String agencia, String numero, double saldo, Cliente cliente, double chequeEspecial, Notificacao notificacao){
+        super(agencia, numero, saldo, cliente, notificacao);
         this.chequeEspecial = chequeEspecial;
     }
 
@@ -37,7 +40,9 @@ public class ContaCorrente extends Conta {
 
 public void sacar(double valor){
     if (valor > getSaldo()){
-        this.setChequeEspecial(valor - getSaldo());
+        double resto = valor - getSaldo();
+        this.setChequeEspecial(getChequeEspecial() - resto); 
+        this.setSaldo(resto * -1);
         System.out.println("Saque realizado. Você está em cheque especial");
         verChequeEspecial();
         }
