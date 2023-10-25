@@ -70,6 +70,7 @@ public void transferir(double valor, Conta destinatario){
 public void adicionarTransacao(String tipo, double valor, LocalDateTime data){
     Transacao novaTransacao = new Transacao(tipo, valor, LocalDateTime.now());
     transacoes.add(novaTransacao);
+    notificacao.enviarNotificacao(tipo, valor);
 }
  public void verExtrato(){
     for(Transacao novaTransacao : transacoes){
